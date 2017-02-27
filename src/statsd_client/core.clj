@@ -24,7 +24,7 @@
       (.incrementCounter client key))
 
     (gauge [c key val]
-      (.recordeGaugeValue client key val))
+      (.recordGaugeValue client key val))
 
     (timing [c key val]
       (.recordExecutionTime client key val))
