@@ -21,3 +21,9 @@ Component friendly statsd client for Clojure
 (statsd/event metrics "deploy" "hi")
 
 ```
+
+
+## License
+
+2017, Łukasz Korecki, licenced under MIT license.
+See LICENSE for more details
