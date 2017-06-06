@@ -24,6 +24,7 @@ Component friendly statsd client for Clojure
 
 ## TODO
 
+- [ ] Switch to DataDog/java-dogstatsd-client as base
 - [ ] tests :-)
 - [x] `with-timing` macro for easier timings recording
 - [ ] `statsd-client.simple` ns for environments which don't use component
