@@ -1,4 +1,4 @@
-# statsd-client
+# stature
 Component friendly statsd client for Clojure
 
 
@@ -7,7 +7,7 @@ Component friendly statsd client for Clojure
 ```clojure
 
 
-(require '[statsd-client.core :as statsd]
+(require '[stature.core :as statsd]
          '[com.stuartsierra.component :as component])
 
 
@@ -27,11 +27,11 @@ Component friendly statsd client for Clojure
 - [x] Switch to DataDog/java-dogstatsd-client as base
 - [ ] tests :-)
 - [x] `with-timing` macro for easier timings recording
-- [x] `statsd-client.simple` ns for environments which don't use component
+- [x] `stature.simple` ns for environments which don't use component
 
 ```clojure
 
-(require '[statsd-client.simple :as statsd])
+(require '[stature.simple :as statsd])
 
 (def conf {:host "127.0.0.1" :port 8125 :prefix "test" })
 (statsd/init! conf)

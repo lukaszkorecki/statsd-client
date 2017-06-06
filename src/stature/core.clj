@@ -1,4 +1,4 @@
-(ns statsd-client.core
+(ns stature.core
   (:require [com.stuartsierra.component :as component])
   (:import [com.timgroup.statsd NonBlockingStatsDClient NoOpStatsDClient]))
 

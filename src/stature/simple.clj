@@ -1,5 +1,5 @@
-(ns statsd-client.simple
-  (:require [statsd-client.core :as statsd]))
+(ns stature.simple
+  (:require [stature.core :as statsd]))
 
 (def client (atom nil))
 

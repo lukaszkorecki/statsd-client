@@ -1,6 +1,6 @@
-(ns statsd-client.core-test
+(ns stature.core-test
   (:require [clojure.test :refer :all]
-            [statsd-client.core :refer :all]))
+            [stature.core :refer :all]))
 
 (deftest a-test
   (testing "FIXME, I fail."
