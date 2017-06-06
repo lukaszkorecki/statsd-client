@@ -25,8 +25,8 @@ Component friendly statsd client for Clojure
 ## TODO
 
 - [ ] tests :-)
-- [ ] `with-timing` macro for easier timings recording
-- [ ] `statsd-client.simple` ns for environments which don't use component:
+- [x] `with-timing` macro for easier timings recording
+- [ ] `statsd-client.simple` ns for environments which don't use component
 
 ```clojure
 

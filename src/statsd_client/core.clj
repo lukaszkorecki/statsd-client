@@ -5,11 +5,9 @@
 (defprotocol Metrics
   (count [this key] "Increment a counter")
   (gauge [this key val] "Set gauge value")
-  (timing [this key val] "Record timing")
-  (event [this key name] "Record an event")
-  ;; TODO: with-timing macro
-  )
+  (timing [this key val] "Record timing"))
 
+(def blank-tags (into-array String ""))
 
 (defrecord StatsdComponent [host port prefix client]
     component/Lifecycle
@@ -20,17 +18,33 @@
       (assoc c :client nil))
 
     Metrics
+    ;; TODO: implement variants with tags and sample rates
     (count [c key]
-      (.incrementCounter client key))
+      (.incrementCounter ^NonBlockingStatsDClient client
+                         ^String key
+                         blank-tags))
 
     (gauge [c key val]
-      (.recordGaugeValue client key val))
+      (.recordGaugeValue ^NonBlockingStatsDClient client
+                         ^String key
+                         val
+                         blank-tags))
 
     (timing [c key val]
-      (.recordExecutionTime client key val))
-
-    (event [c key val]
-    (.recordSetEvent client key val)))
+      (.recordExecutionTime ^NonBlockingStatsDClient client
+                            ^String key
+                            val
+                            blank-tags)))
 
 (defn create [opts]
   (map->StatsdComponent (merge opts {:client nil})))
+
+(defmacro with-timing [statsd key & body]
+  `(let [start-time# (System/currentTimeMillis)
+        return# (do
+                  ~@body)
+
+        time# (- (System/currentTimeMillis) start-time#)]
+
+     (timing ~statsd ~key time#)
+     return#))
