@@ -18,6 +18,7 @@
       (assoc c :client client)))
 
   (stop [c]
+    (.stop client)
     (assoc c :client nil))
 
   ;; TODO: implement variants with tags and sample rates
