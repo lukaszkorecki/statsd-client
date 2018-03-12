@@ -1,4 +1,7 @@
 # stature
+
+![](https://i.annihil.us/u/prod/marvel/i/mg/3/60/527413be6077d/standard_xlarge.jpg)
+
 Component friendly statsd client for Clojure
 
 
@@ -18,17 +21,17 @@ Component friendly statsd client for Clojure
 
 (statsd/count metrics "foo.bar")
 (statsd/gauge metrics "foo.baz" 42)
-(statsd/event metrics "deploy" "hi")
+
+(statsd/with-timing metrics "some.timing"
+  (do-expensive-work))
+
+(statsd/count-on-exception "foo.bar.failure"
+  (some-remote-call-that-fails)) ;; -> will increment foo.bar.failure counter if exception is thrown
 
 ```
 
-## TODO
-
-- [x] Switch to DataDog/java-dogstatsd-client as base
-- [ ] tests :-)
-- [x] `with-timing` macro for easier timings recording
-- [x] `stature.simple` ns for environments which don't use component
-
+### Simple NS (no direct component dependency)
+-
 ```clojure
 
 (require '[stature.simple :as statsd])
@@ -40,7 +43,14 @@ Component friendly statsd client for Clojure
 
 ```
 
-## License
 
-2017, Łukasz Korecki, licenced under MIT license.
-See LICENSE for more details
+### Mock component
+
+```clojure
+(require '[stature.mock]
+         '[stature.core :as metrics])
+
+(def m (mock/create))
+
+(metrics/increment m "foo.bar")
+```
