@@ -4,6 +4,11 @@
 
 Component friendly statsd client for Clojure
 
+# :warning: read this 
+
+Stature has been in production use at [NomNom](https://nomnominsights.com) for a while now.
+We're planing to release it to Clojars soon :soon: :tm:
+
 
 ### Usage
 
