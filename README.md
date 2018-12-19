@@ -1,3 +1,7 @@
+# :warning: Heads up!
+
+See here https://github.com/nomnom-insights/nomnom.stature for the maintained version
+
 # stature
 
 ![](https://i.annihil.us/u/prod/marvel/i/mg/3/60/527413be6077d/standard_xlarge.jpg)
